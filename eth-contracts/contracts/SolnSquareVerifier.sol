@@ -2,6 +2,7 @@ pragma solidity >=0.4.21;
 
 import "./ERC721Mintable.sol";
 import "./verifier.sol";
+import "./Oraclize.sol";
 
 // TODO define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
 contract SquareVerifier is Verifier {
@@ -10,6 +11,7 @@ contract SquareVerifier is Verifier {
 
 // TODO define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
 contract SolnSquareVerifier is ERC721Mintable {
+
 
     SquareVerifier squareVerifier;
 
@@ -45,7 +47,7 @@ contract SolnSquareVerifier is ERC721Mintable {
         require(squareVerifier.verifyTx(a, b, c, input), "Could not verify solutions");
 
         _addSolution(_address, tokenId, key);
-        mint(_address, tokenId);
+        super.mint(_address, tokenId);
     }
 
 }
