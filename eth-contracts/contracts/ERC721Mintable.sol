@@ -544,8 +544,8 @@ contract ERC721Mintable is ERC721Metadata {
         ERC721Metadata(name, _symbol, "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/") public {}
 
     function mint(address to, uint256 tokenId) public onlyOwner returns (bool) {
-        super._mint(to, tokenId);
-        super.setTokenURI(tokenId);
+        _mint(to, tokenId);
+        setTokenURI(tokenId);
         return true;
     }
 }
