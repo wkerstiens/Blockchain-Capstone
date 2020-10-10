@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity >= 0.5.0;
 
 import 'openzeppelin-solidity/contracts/utils/Address.sol';
 import 'openzeppelin-solidity/contracts/drafts/Counters.sol';
@@ -45,6 +45,7 @@ contract Pausable is Ownable {
     //  2) create a public setter using the inherited onlyOwner modifier
     function pause(bool status) external onlyOwner {
         require(_paused != status, "Must be different from the current state");
+        _paused = status;
     }
 
     //  3) create an internal constructor that sets the _paused variable to false
@@ -172,7 +173,7 @@ contract ERC721 is Pausable, ERC165 {
 
     function getApproved(uint256 tokenId) public view returns (address) {
         // TODO return token approval if it exists
-        require(_exists(_tokenApprovals[tokenId]), "Invalid token id");
+        require(_exists(tokenId), "Invalid token id");
         return _tokenApprovals[tokenId];
     }
 
@@ -541,7 +542,7 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 //      -calls the superclass mint and setTokenURI functions
 contract ERC721Mintable is ERC721Metadata {
     constructor (string memory name, string memory symbol)
-        ERC721Metadata(name, _symbol, "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/") public {}
+        ERC721Metadata(name, symbol, "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/") public {}
 
     function mint(address to, uint256 tokenId) public onlyOwner returns (bool) {
         _mint(to, tokenId);
