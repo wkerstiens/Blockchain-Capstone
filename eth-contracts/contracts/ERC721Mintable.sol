@@ -11,6 +11,8 @@ contract Ownable {
     //  1) create a private '_owner' variable of type address with a public getter function
     address public _owner;
 
+    event TransferredOwnership(address oldOwner, address newOwner);
+
     //  2) create an internal constructor that sets the _owner var to the creator of the contract
     constructor() internal {
         _owner = msg.sender;
@@ -23,6 +25,10 @@ contract Ownable {
         _;
     }
 
+    function owner() external view returns (address) {
+        return _owner;
+    }
+
     //  4) fill out the transferOwnership function
     //  5) create an event that emits anytime ownerShip is transferred (including in the constructor)
     function transferOwnership(address newOwner) public onlyOwner {
@@ -33,8 +39,6 @@ contract Ownable {
         _owner = newOwner;
         emit TransferredOwnership(oldOwner, _owner);
     }
-
-    event TransferredOwnership(address oldOwner, address newOwner);
 }
 
 //  TODO's: Create a Pausable contract that inherits from the Ownable contract
