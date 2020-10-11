@@ -83,6 +83,8 @@ Storefront: https://rinkeby.opensea.io/storefront/wk-real-estate
 Listed 5 properties using the contract owner account.
 ![Image showning 5 properties on OpenSea.io](readme_images/PropertiesListed.png)
 
+https://rinkeby.etherscan.io/token/0x0a3fd725ca68908cb88714ed5900768d82291e39
+
 
 ----
 # Additional Details
