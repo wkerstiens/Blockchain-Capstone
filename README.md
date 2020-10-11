@@ -80,8 +80,8 @@ Token 10 has been minted with transaction hash: 0x83266e0821f98d8baac77129ca19a3
 ## Generated OpenSea marketplace
 
 Storefront: https://rinkeby.opensea.io/storefront/wk-real-estate
-
-Listed 5 properties 1-5 using the contract owner account.
+Listed 5 properties using the contract owner account.
+![Image showning 5 properties on OpenSea.io](readme_images/PropertiesListed.png)
 
 
 ----
